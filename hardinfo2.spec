@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : hardinfo2
-Version  : 2.1.14
-Release  : 2
-URL      : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.14/hardinfo2-2.1.14.tar.gz
-Source0  : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.14/hardinfo2-2.1.14.tar.gz
+Version  : 2.1.17
+Release  : 3
+URL      : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.17/hardinfo2-2.1.17.tar.gz
+Source0  : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.17/hardinfo2-2.1.17.tar.gz
 Summary  : System Information and Benchmark for Linux Systems
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0-or-later LGPL-2.0-or-later LGPL-2.1+ LGPL-2.1-only
@@ -101,8 +101,8 @@ services components for the hardinfo2 package.
 
 
 %prep
-%setup -q -n hardinfo2-release-2.1.14
-cd %{_builddir}/hardinfo2-release-2.1.14
+%setup -q -n hardinfo2-release-2.1.17
+cd %{_builddir}/hardinfo2-release-2.1.17
 
 %build
 ## build_prepend content
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1726851584
+export SOURCE_DATE_EPOCH=1727792278
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -149,7 +149,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1726851584
+export SOURCE_DATE_EPOCH=1727792278
 rm -rf %{buildroot}
 export GOAMD64=v2
 GOAMD64=v2
@@ -214,12 +214,51 @@ popd
 /usr/share/hardinfo2/pixmaps/dialog-error.png
 /usr/share/hardinfo2/pixmaps/dialog-information.png
 /usr/share/hardinfo2/pixmaps/dialog-warning.png
+/usr/share/hardinfo2/pixmaps/distros/almalinux.svg
 /usr/share/hardinfo2/pixmaps/distros/arch.svg
+/usr/share/hardinfo2/pixmaps/distros/armbian.svg
+/usr/share/hardinfo2/pixmaps/distros/bodhi.svg
+/usr/share/hardinfo2/pixmaps/distros/centos.svg
 /usr/share/hardinfo2/pixmaps/distros/clear-linux-os.svg
 /usr/share/hardinfo2/pixmaps/distros/debian.svg
+/usr/share/hardinfo2/pixmaps/distros/devuan.svg
+/usr/share/hardinfo2/pixmaps/distros/edubuntu.svg
+/usr/share/hardinfo2/pixmaps/distros/endeavouros.svg
 /usr/share/hardinfo2/pixmaps/distros/fedora.svg
+/usr/share/hardinfo2/pixmaps/distros/garuda.svg
+/usr/share/hardinfo2/pixmaps/distros/gentoo.svg
+/usr/share/hardinfo2/pixmaps/distros/kali.svg
 /usr/share/hardinfo2/pixmaps/distros/kubuntu.svg
+/usr/share/hardinfo2/pixmaps/distros/linuxmint.svg
+/usr/share/hardinfo2/pixmaps/distros/lubuntu.svg
+/usr/share/hardinfo2/pixmaps/distros/mageia.svg
+/usr/share/hardinfo2/pixmaps/distros/manjaro.svg
+/usr/share/hardinfo2/pixmaps/distros/mxlinux.svg
+/usr/share/hardinfo2/pixmaps/distros/nixos.svg
+/usr/share/hardinfo2/pixmaps/distros/nobara.svg
+/usr/share/hardinfo2/pixmaps/distros/ol.svg
+/usr/share/hardinfo2/pixmaps/distros/opensuse-tumbleweed.svg
+/usr/share/hardinfo2/pixmaps/distros/opensuse.svg
+/usr/share/hardinfo2/pixmaps/distros/pclinuxos.svg
+/usr/share/hardinfo2/pixmaps/distros/pop.svg
+/usr/share/hardinfo2/pixmaps/distros/puppy.svg
+/usr/share/hardinfo2/pixmaps/distros/pureos.svg
+/usr/share/hardinfo2/pixmaps/distros/raspberry-pi.svg
+/usr/share/hardinfo2/pixmaps/distros/raspbian.svg
+/usr/share/hardinfo2/pixmaps/distros/rebornos.svg
+/usr/share/hardinfo2/pixmaps/distros/rhel.svg
+/usr/share/hardinfo2/pixmaps/distros/rocky.svg
+/usr/share/hardinfo2/pixmaps/distros/slackware.svg
+/usr/share/hardinfo2/pixmaps/distros/slint.svg
+/usr/share/hardinfo2/pixmaps/distros/sysrescue.svg
+/usr/share/hardinfo2/pixmaps/distros/ubuntu-budgie.svg
+/usr/share/hardinfo2/pixmaps/distros/ubuntu-gnome.svg
+/usr/share/hardinfo2/pixmaps/distros/ubuntu-kylin.svg
+/usr/share/hardinfo2/pixmaps/distros/ubuntu-mate.svg
+/usr/share/hardinfo2/pixmaps/distros/ubuntu-studio.svg
 /usr/share/hardinfo2/pixmaps/distros/ubuntu.svg
+/usr/share/hardinfo2/pixmaps/distros/ultramarine.svg
+/usr/share/hardinfo2/pixmaps/distros/void.svg
 /usr/share/hardinfo2/pixmaps/distros/xubuntu.svg
 /usr/share/hardinfo2/pixmaps/dns.png
 /usr/share/hardinfo2/pixmaps/environment.png
@@ -229,6 +268,7 @@ popd
 /usr/share/hardinfo2/pixmaps/file-roller.png
 /usr/share/hardinfo2/pixmaps/hardinfo.png
 /usr/share/hardinfo2/pixmaps/hardinfo2.png
+/usr/share/hardinfo2/pixmaps/hardinfo2.svg
 /usr/share/hardinfo2/pixmaps/hdd.png
 /usr/share/hardinfo2/pixmaps/home.png
 /usr/share/hardinfo2/pixmaps/inputdevices.png
@@ -275,7 +315,7 @@ popd
 /usr/share/hardinfo2/sdcard.ids
 /usr/share/hardinfo2/usb.ids
 /usr/share/hardinfo2/vendor.ids
-/usr/share/icons/hicolor/256x256/apps/hardinfo2.png
+/usr/share/icons/hicolor/scalable/apps/hardinfo2.svg
 /usr/share/metainfo/org.hardinfo2.hardinfo2.metainfo.xml
 
 %files lib
