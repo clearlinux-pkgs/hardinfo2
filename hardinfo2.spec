@@ -6,10 +6,10 @@
 # autospec commit: f35655a
 #
 Name     : hardinfo2
-Version  : 2.1.17
-Release  : 3
-URL      : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.17/hardinfo2-2.1.17.tar.gz
-Source0  : https://github.com/hardinfo2/hardinfo2/archive/release-2.1.17/hardinfo2-2.1.17.tar.gz
+Version  : 2.2.1
+Release  : 4
+URL      : https://github.com/hardinfo2/hardinfo2/archive/release-2.2.1/hardinfo2-2.2.1.tar.gz
+Source0  : https://github.com/hardinfo2/hardinfo2/archive/release-2.2.1/hardinfo2-2.2.1.tar.gz
 Summary  : System Information and Benchmark for Linux Systems
 Group    : Development/Tools
 License  : GPL-2.0+ GPL-3.0-or-later LGPL-2.0-or-later LGPL-2.1+ LGPL-2.1-only
@@ -101,8 +101,8 @@ services components for the hardinfo2 package.
 
 
 %prep
-%setup -q -n hardinfo2-release-2.1.17
-cd %{_builddir}/hardinfo2-release-2.1.17
+%setup -q -n hardinfo2-release-2.2.1
+cd %{_builddir}/hardinfo2-release-2.2.1
 
 %build
 ## build_prepend content
@@ -112,7 +112,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1727792278
+export SOURCE_DATE_EPOCH=1729781638
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -149,7 +149,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1727792278
+export SOURCE_DATE_EPOCH=1729781638
 rm -rf %{buildroot}
 export GOAMD64=v2
 GOAMD64=v2
@@ -165,6 +165,7 @@ popd
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/hardinfo2
+/usr/bin/hwinfo2_fetch_sysdata
 
 %files data
 %defattr(-,root,root,-)
@@ -177,10 +178,9 @@ popd
 /usr/share/hardinfo2/ieee_oui.ids
 /usr/share/hardinfo2/kernel-module-icons.json
 /usr/share/hardinfo2/pci.ids
-/usr/share/hardinfo2/pixmaps/about-modules.png
-/usr/share/hardinfo2/pixmaps/audio.png
-/usr/share/hardinfo2/pixmaps/battery.png
-/usr/share/hardinfo2/pixmaps/benchmark.png
+/usr/share/hardinfo2/pixmaps/audio.svg
+/usr/share/hardinfo2/pixmaps/battery.svg
+/usr/share/hardinfo2/pixmaps/benchmark.svg
 /usr/share/hardinfo2/pixmaps/bg1_dark.jpg
 /usr/share/hardinfo2/pixmaps/bg1_light.jpg
 /usr/share/hardinfo2/pixmaps/bg2_dark.jpg
@@ -193,28 +193,29 @@ popd
 /usr/share/hardinfo2/pixmaps/bg5_light.jpg
 /usr/share/hardinfo2/pixmaps/bg6_dark.jpg
 /usr/share/hardinfo2/pixmaps/bg6_light.jpg
-/usr/share/hardinfo2/pixmaps/blowfish.png
-/usr/share/hardinfo2/pixmaps/bluetooth.png
-/usr/share/hardinfo2/pixmaps/bolt.png
-/usr/share/hardinfo2/pixmaps/boot.png
-/usr/share/hardinfo2/pixmaps/camera-photo.png
-/usr/share/hardinfo2/pixmaps/camera-web.png
-/usr/share/hardinfo2/pixmaps/cdrom.png
+/usr/share/hardinfo2/pixmaps/blowfish.svg
+/usr/share/hardinfo2/pixmaps/bluetooth.svg
+/usr/share/hardinfo2/pixmaps/bolt.svg
+/usr/share/hardinfo2/pixmaps/boot.svg
+/usr/share/hardinfo2/pixmaps/camera-photo.svg
+/usr/share/hardinfo2/pixmaps/camera-web.svg
+/usr/share/hardinfo2/pixmaps/cdrom.svg
 /usr/share/hardinfo2/pixmaps/circle_green_check.svg
 /usr/share/hardinfo2/pixmaps/circle_red_x.svg
 /usr/share/hardinfo2/pixmaps/circle_yellow_exclaim.svg
-/usr/share/hardinfo2/pixmaps/clipboard.png
-/usr/share/hardinfo2/pixmaps/close.png
-/usr/share/hardinfo2/pixmaps/compress.png
-/usr/share/hardinfo2/pixmaps/computer.png
-/usr/share/hardinfo2/pixmaps/cryptohash.png
-/usr/share/hardinfo2/pixmaps/dev_removable.png
-/usr/share/hardinfo2/pixmaps/devel.png
-/usr/share/hardinfo2/pixmaps/devices.png
-/usr/share/hardinfo2/pixmaps/dialog-error.png
-/usr/share/hardinfo2/pixmaps/dialog-information.png
-/usr/share/hardinfo2/pixmaps/dialog-warning.png
+/usr/share/hardinfo2/pixmaps/close.svg
+/usr/share/hardinfo2/pixmaps/compress.svg
+/usr/share/hardinfo2/pixmaps/computer.svg
+/usr/share/hardinfo2/pixmaps/cryptohash.svg
+/usr/share/hardinfo2/pixmaps/dev_removable.svg
+/usr/share/hardinfo2/pixmaps/devel.svg
+/usr/share/hardinfo2/pixmaps/devices.svg
+/usr/share/hardinfo2/pixmaps/devicetree.svg
+/usr/share/hardinfo2/pixmaps/dialog-error.svg
+/usr/share/hardinfo2/pixmaps/dialog-information.svg
+/usr/share/hardinfo2/pixmaps/dialog-warning.svg
 /usr/share/hardinfo2/pixmaps/distros/almalinux.svg
+/usr/share/hardinfo2/pixmaps/distros/alpine.svg
 /usr/share/hardinfo2/pixmaps/distros/arch.svg
 /usr/share/hardinfo2/pixmaps/distros/armbian.svg
 /usr/share/hardinfo2/pixmaps/distros/bodhi.svg
@@ -237,10 +238,13 @@ popd
 /usr/share/hardinfo2/pixmaps/distros/nixos.svg
 /usr/share/hardinfo2/pixmaps/distros/nobara.svg
 /usr/share/hardinfo2/pixmaps/distros/ol.svg
+/usr/share/hardinfo2/pixmaps/distros/openmandriva.svg
 /usr/share/hardinfo2/pixmaps/distros/opensuse-tumbleweed.svg
 /usr/share/hardinfo2/pixmaps/distros/opensuse.svg
+/usr/share/hardinfo2/pixmaps/distros/parrot.svg
 /usr/share/hardinfo2/pixmaps/distros/pclinuxos.svg
 /usr/share/hardinfo2/pixmaps/distros/pop.svg
+/usr/share/hardinfo2/pixmaps/distros/postmarketos.svg
 /usr/share/hardinfo2/pixmaps/distros/puppy.svg
 /usr/share/hardinfo2/pixmaps/distros/pureos.svg
 /usr/share/hardinfo2/pixmaps/distros/raspberry-pi.svg
@@ -260,58 +264,57 @@ popd
 /usr/share/hardinfo2/pixmaps/distros/ultramarine.svg
 /usr/share/hardinfo2/pixmaps/distros/void.svg
 /usr/share/hardinfo2/pixmaps/distros/xubuntu.svg
-/usr/share/hardinfo2/pixmaps/dns.png
-/usr/share/hardinfo2/pixmaps/environment.png
-/usr/share/hardinfo2/pixmaps/face-grin.png
-/usr/share/hardinfo2/pixmaps/fan.png
-/usr/share/hardinfo2/pixmaps/fft.png
-/usr/share/hardinfo2/pixmaps/file-roller.png
-/usr/share/hardinfo2/pixmaps/hardinfo.png
-/usr/share/hardinfo2/pixmaps/hardinfo2.png
+/usr/share/hardinfo2/pixmaps/dmi.svg
+/usr/share/hardinfo2/pixmaps/environment.svg
+/usr/share/hardinfo2/pixmaps/fan.svg
+/usr/share/hardinfo2/pixmaps/fft.svg
+/usr/share/hardinfo2/pixmaps/filesystem.svg
+/usr/share/hardinfo2/pixmaps/firmware.svg
+/usr/share/hardinfo2/pixmaps/gpu.svg
 /usr/share/hardinfo2/pixmaps/hardinfo2.svg
-/usr/share/hardinfo2/pixmaps/hdd.png
-/usr/share/hardinfo2/pixmaps/home.png
-/usr/share/hardinfo2/pixmaps/inputdevices.png
-/usr/share/hardinfo2/pixmaps/internet.png
-/usr/share/hardinfo2/pixmaps/joystick.png
-/usr/share/hardinfo2/pixmaps/keyboard.png
-/usr/share/hardinfo2/pixmaps/language.png
-/usr/share/hardinfo2/pixmaps/logo.xcf
-/usr/share/hardinfo2/pixmaps/media-floppy.png
-/usr/share/hardinfo2/pixmaps/media-removable.png
-/usr/share/hardinfo2/pixmaps/memory.png
-/usr/share/hardinfo2/pixmaps/modem.png
-/usr/share/hardinfo2/pixmaps/module.png
-/usr/share/hardinfo2/pixmaps/monitor.png
-/usr/share/hardinfo2/pixmaps/mouse.png
-/usr/share/hardinfo2/pixmaps/nautilus.png
-/usr/share/hardinfo2/pixmaps/network-connections.png
-/usr/share/hardinfo2/pixmaps/network-interface.png
-/usr/share/hardinfo2/pixmaps/network-statistics.png
-/usr/share/hardinfo2/pixmaps/network.png
-/usr/share/hardinfo2/pixmaps/nqueens.png
-/usr/share/hardinfo2/pixmaps/os.png
-/usr/share/hardinfo2/pixmaps/pcmcia.png
-/usr/share/hardinfo2/pixmaps/printer.png
-/usr/share/hardinfo2/pixmaps/processor.png
-/usr/share/hardinfo2/pixmaps/raytrace.png
-/usr/share/hardinfo2/pixmaps/refresh.png
-/usr/share/hardinfo2/pixmaps/report-large.png
-/usr/share/hardinfo2/pixmaps/report.png
-/usr/share/hardinfo2/pixmaps/resources.png
-/usr/share/hardinfo2/pixmaps/security.png
-/usr/share/hardinfo2/pixmaps/server-large.png
-/usr/share/hardinfo2/pixmaps/server.png
-/usr/share/hardinfo2/pixmaps/server_sync.png
-/usr/share/hardinfo2/pixmaps/shares.png
-/usr/share/hardinfo2/pixmaps/summary.png
-/usr/share/hardinfo2/pixmaps/syncmanager-small.png
-/usr/share/hardinfo2/pixmaps/syncmanager.png
-/usr/share/hardinfo2/pixmaps/therm.png
-/usr/share/hardinfo2/pixmaps/usb.png
-/usr/share/hardinfo2/pixmaps/usbfldisk.png
-/usr/share/hardinfo2/pixmaps/users.png
-/usr/share/hardinfo2/pixmaps/wireless.png
+/usr/share/hardinfo2/pixmaps/hdd.svg
+/usr/share/hardinfo2/pixmaps/home.svg
+/usr/share/hardinfo2/pixmaps/inputdevices.svg
+/usr/share/hardinfo2/pixmaps/internet.svg
+/usr/share/hardinfo2/pixmaps/joystick.svg
+/usr/share/hardinfo2/pixmaps/keyboard.svg
+/usr/share/hardinfo2/pixmaps/language.svg
+/usr/share/hardinfo2/pixmaps/mb.svg
+/usr/share/hardinfo2/pixmaps/media-floppy.svg
+/usr/share/hardinfo2/pixmaps/media-removable.svg
+/usr/share/hardinfo2/pixmaps/media-sd.svg
+/usr/share/hardinfo2/pixmaps/media-usb.svg
+/usr/share/hardinfo2/pixmaps/memory.svg
+/usr/share/hardinfo2/pixmaps/modem.svg
+/usr/share/hardinfo2/pixmaps/module.svg
+/usr/share/hardinfo2/pixmaps/monitor.svg
+/usr/share/hardinfo2/pixmaps/mouse.svg
+/usr/share/hardinfo2/pixmaps/nautilus.svg
+/usr/share/hardinfo2/pixmaps/network-arp.svg
+/usr/share/hardinfo2/pixmaps/network-connections.svg
+/usr/share/hardinfo2/pixmaps/network-interface.svg
+/usr/share/hardinfo2/pixmaps/network-statistics.svg
+/usr/share/hardinfo2/pixmaps/network.svg
+/usr/share/hardinfo2/pixmaps/nqueens.svg
+/usr/share/hardinfo2/pixmaps/os.svg
+/usr/share/hardinfo2/pixmaps/pci.svg
+/usr/share/hardinfo2/pixmaps/pcmcia.svg
+/usr/share/hardinfo2/pixmaps/printer.svg
+/usr/share/hardinfo2/pixmaps/processor.svg
+/usr/share/hardinfo2/pixmaps/raytrace.svg
+/usr/share/hardinfo2/pixmaps/refresh.svg
+/usr/share/hardinfo2/pixmaps/report-bug.svg
+/usr/share/hardinfo2/pixmaps/report.svg
+/usr/share/hardinfo2/pixmaps/resources.svg
+/usr/share/hardinfo2/pixmaps/route.svg
+/usr/share/hardinfo2/pixmaps/security.svg
+/usr/share/hardinfo2/pixmaps/shares.svg
+/usr/share/hardinfo2/pixmaps/summary.svg
+/usr/share/hardinfo2/pixmaps/sync.svg
+/usr/share/hardinfo2/pixmaps/therm.svg
+/usr/share/hardinfo2/pixmaps/usb.svg
+/usr/share/hardinfo2/pixmaps/users.svg
+/usr/share/hardinfo2/pixmaps/wireless.svg
 /usr/share/hardinfo2/sdcard.ids
 /usr/share/hardinfo2/usb.ids
 /usr/share/hardinfo2/vendor.ids
